@@ -95,7 +95,7 @@ Convince/
 ├── prompts/             # All the prompt used
 ├── Run/                 # Load the data from different domains
 ├── utils/               # Tools and public functions
-├── evaluate-IT.py       # Evaluation of the "Failure Diagnosis in Distributed System" domain
-├── evaluate-Medical.py  # Evaluation of the "Medical Diagnosis" domain
+├── evaluate_IT.py       # Evaluation of the "Failure Diagnosis in Distributed System" domain
+├── evaluate_Medical.py  # Evaluation of the "Medical Diagnosis" domain
 ├── main.py              # The entrance of the experiments
 └── requirements.txt     # Dependencies
