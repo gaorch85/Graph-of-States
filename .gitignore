@@ -1,0 +1,64 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Distribution / packaging
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+sdist/
+develop-eggs/
+lib/
+lib64/
+parts/
+var/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+
+# Logs and debug
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Testing / coverage
+.cache/
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+nosetests.xml
+test-results.xml
+htmlcov/
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints
+
+# IDE / editor
+.vscode/
+.idea/
+*.iml
+
+# Environment files
+.env
+.env.*
+
+# OS generated
+.DS_Store
+Thumbs.db
