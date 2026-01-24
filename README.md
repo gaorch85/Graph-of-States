@@ -1,1 +1,101 @@
-# Convince
+<div align="center">
+
+<img src="assets/logo.png" width="200" alt="Convince Logo">
+
+# Grounding Reasoning in Explicit Belief States:  A Neuro-Symbolic Reasoning Framework for Abduction
+
+
+
+[![Paper](https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg)]()
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
+
+
+
+</div>
+
+
+
+## 📖 Abstract
+
+Logical reasoning encompasses deduction, induction, and abduction. However, while Large Language Models (LLMs) have effectively mastered the former two, abductive reasoning remains significantly underexplored. Existing frameworks, predominantly designed for static deductive tasks, fail to generalize to abductive reasoning due to unstructured state representation and lack of explicit state control. Consequently, they inevitably prone to Evidence Fabrication, Context Drift, Failed Backtracking, and Early Stopping. To bridge this gap, we introduce Convince, a general-purpose neuro-symbolic framework tailored for abductive tasks. Convince grounds multi-agent collaboration in a structured belief states, utilizing a causal graph to explicitly encode logical dependencies and a state machine to govern the valid transitions of the reasoning process. By dynamically aligning the reasoning focus with these symbolic constraints, our approach transforms aimless, unconstrained exploration into a convergent, directed search. Extensive evaluations on two real-world datasets demonstrate that Convince significantly outperforms all baselines, providing a robust solution for complex abductive tasks. Code repo and all prompts: https://anonymous.4open.science/r/Convince-4CEE
+
+
+
+## 🔥 News
+* **[2026-01-22]** 🚀 **Convince** code released!
+
+## 🌟 Key Features
+
+Convince introduces a dual-layer neuro-symbolic architecture designed to solve complex abductive tasks in high-stakes domains like Medical Diagnosis and Failure Diagnosis in Distributed Systems.
+
+* **🧠 Cognitive Layer :** A role-based collaborative framework orchestrating agents aligned with real-world professional roles (e.g., *Physician*, *LinuxOperator*) for domain-specific execution.
+* **🕸️ Symbolic Layer :**
+    * **Causal Graph ($G$):** Explicitly structures belief states by mapping causal relationships among hypotheses and evidence, mitigating *Evidence Fabrication* and *Context Drift*.
+    * **State Machine ($S$):** Governs the reasoning trajectory, enforcing rigorous logical transitions (Backtracking & Drill-down) to prevent *Failed Backtracking* and *Early Stopping*.
+* **🎯 Directed Search guided by reasoning focus ($h_t^*$):** Transforms aimless stochastic exploration into a convergent search by dynamically aligning reasoning focus with symbolic constraints.
+
+## 🖼️ Methodology
+
+<div align="center">
+  <img src="assets/framework.png" width="40%" alt="Convince Framework">
+  <br>
+  <em>Overview of the Convince Dual-Layer Neuro-Symbolic Framework.</em>
+</div>
+
+## 🛠️ Installation
+
+1.  **Clone the repository**
+
+    Download the zip file of this repo to your server and unzip it.
+    ```bash
+    cd Convince
+    ```
+
+2.  **Create a virtual environment (Recommended)**
+    ```bash
+    conda create -n convince python=3.12.11
+    conda activate convince
+    ```
+
+3.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Configure API Keys**
+    ```bash
+    OPENAI_API_KEY="Your-API-KEY"
+    ```
+
+## 🚀 Quick Start
+
+Convince supports multiple domains. Below are examples for running the framework on Medical Diagnosis.
+
+Note: You can change the configs in ``/Convince/configs``
+
+### Medical Diagnosis (DiagnosisArena)
+Run the diagnosis on a sample case:
+
+```bash
+python main.py 
+```
+
+
+
+
+## 📂 Project Structure
+
+```text
+Convince/
+├── assets/             # Images and figures
+├── agents/             # Definition of central agent and expert agents
+├── belief/             # Definition of causal graph and state machine
+├── configs/            # configs of the agents, belief and domain
+├── prompts/            # All the prompt used
+├──Run/                 # Load the data from different domains
+├──utils/               # Tools and public functions
+├──evaluate-IT.py       # Evaluation of the "Failure Diagnosis in Distributed System" domain
+├──evaluate-Medical.py  # Evaluation of the "Medical Diagnosis" domain
+├──main.py              # The entrance of the experiments
+└── requirements.txt    # Dependencies

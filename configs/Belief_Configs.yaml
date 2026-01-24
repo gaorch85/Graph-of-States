@@ -1,0 +1,5 @@
+fsm:
+  thresholds:
+    gap_delta: 0.3
+    min_support: 3
+    max_steps: 2

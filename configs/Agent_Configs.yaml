@@ -1,0 +1,7 @@
+llm_args:
+  temperature: 0.8
+  max_tokens: 4096
+  return_meta: True
+  model_path: gpt-5.1
+  session_max_steps: 3
+  max_retrieval_steps: 3

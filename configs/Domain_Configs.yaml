@@ -1,0 +1,14 @@
+DiagnosisArena:
+  expert_names: ["Laboratory_Physician", "Pathologist", "Radiologist"]
+  expert_descriptions: {"Laboratory_Physician": "Clinical laboratory physician who analyzes blood, urine and other samples to obtain objective indicator data, providing laboratory evidence for disease diagnosis.", "Pathologist": "Pathologist who analyzes cell morphology in pathological sections, confirms lesion nature (e.g., cancer), and delivers definitive diagnostic conclusions.", "Radiologist": "Radiologist who interprets CT and other imaging results, judges structural abnormalities (e.g., lesions, fractures), and provides imaging diagnostic evidence."}
+  head_name: "Primary_Physician"
+  tool_names: ["Evidence_Text"]
+  tool_description: {}
+
+
+Micro:
+  expert_names: ["Linux_Agent", "NetworkOperator", "DatabaseOperator"]
+  expert_descriptions: {"Linux_Agent": "Linux SRE agent who investigates incidents using provided telemetry snapshots. Prioritize shell command snapshots, then logs, and finally metrics to validate or refute the current hypothesis.", "NetworkOperator": "Network SRE agent who investigates incidents using provided telemetry snapshots. Prioritize port/routing snapshots, then firewall logs, and finally traffic metrics to validate or refute the current hypothesis.", "DatabaseOperator": "Database SRE agent who investigates incidents using provided telemetry snapshots. Prioritize process/lock snapshots, then slow query logs, and finally database metrics to validate or refute the current hypothesis."}
+  head_name: "SRE_Commander"
+  tool_names: ["Telemetry_Tools"]
+  tool_descriptions: {"Telemetry_Tools": "LinuxAgent can query telemetry via three tools: shell (LLM fuzzy match against shell.csv), log (ERROR-first filter with keyword narrowing), metric (list metrics, pick up to 3, specify timestamp and window; default window ±1h, recommended ±10m)."}
