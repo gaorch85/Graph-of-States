@@ -88,14 +88,14 @@ python main.py
 
 ```text
 Convince/
-├── assets/             # Images and figures
-├── agents/             # Definition of central agent and expert agents
-├── belief/             # Definition of causal graph and state machine
-├── configs/            # configs of the agents, belief and domain
-├── prompts/            # All the prompt used
-├──Run/                 # Load the data from different domains
-├──utils/               # Tools and public functions
-├──evaluate-IT.py       # Evaluation of the "Failure Diagnosis in Distributed System" domain
-├──evaluate-Medical.py  # Evaluation of the "Medical Diagnosis" domain
-├──main.py              # The entrance of the experiments
-└── requirements.txt    # Dependencies
+├── assets/              # Images and figures
+├── agents/              # Definition of central agent and expert agents
+├── belief/              # Definition of causal graph and state machine
+├── configs/             # configs of the agents, belief and domain
+├── prompts/             # All the prompt used
+├── Run/                 # Load the data from different domains
+├── utils/               # Tools and public functions
+├── evaluate-IT.py       # Evaluation of the "Failure Diagnosis in Distributed System" domain
+├── evaluate-Medical.py  # Evaluation of the "Medical Diagnosis" domain
+├── main.py              # The entrance of the experiments
+└── requirements.txt     # Dependencies
