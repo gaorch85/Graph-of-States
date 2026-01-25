@@ -43,6 +43,8 @@ Convince introduces a dual-layer neuro-symbolic architecture designed to solve c
   <em>Overview of the Convince Dual-Layer Neuro-Symbolic Framework.</em>
 </div>
 
+
+
 ## 🛠️ Installation
 
 1.  **Clone the repository**
@@ -99,3 +101,39 @@ Convince/
 ├── evaluate_Medical.py  # Evaluation of the "Medical Diagnosis" domain
 ├── main.py              # The entrance of the experiments
 └── requirements.txt     # Dependencies
+```
+
+## 🎨 Comic Walkthrough
+To facilitate an intuitive understanding of our framework, we present it in the form of comic strips.
+
+<div align="center">
+  <img src="assets/1.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/2.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/3.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/4.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/5.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/6.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/7.jpg" width="80%" alt="Comic">
+</div>
+
+<div align="center">
+  <img src="assets/8.jpg" width="80%" alt="Comic">
+</div>
