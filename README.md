@@ -18,7 +18,7 @@
 
 ## 📖 Abstract
 
-Logical reasoning encompasses deduction, induction, and abduction. However, while Large Language Models (LLMs) have effectively mastered the former two, abductive reasoning remains significantly underexplored. Existing frameworks, predominantly designed for static deductive tasks, fail to generalize to abductive reasoning due to unstructured state representation and lack of explicit state control. Consequently, they inevitably prone to Evidence Fabrication, Context Drift, Failed Backtracking, and Early Stopping. To bridge this gap, we introduce Convince, a general-purpose neuro-symbolic framework tailored for abductive tasks. Convince grounds multi-agent collaboration in a structured belief states, utilizing a causal graph to explicitly encode logical dependencies and a state machine to govern the valid transitions of the reasoning process. By dynamically aligning the reasoning focus with these symbolic constraints, our approach transforms aimless, unconstrained exploration into a convergent, directed search. Extensive evaluations on two real-world datasets demonstrate that Convince significantly outperforms all baselines, providing a robust solution for complex abductive tasks. Code repo and all prompts: https://anonymous.4open.science/r/Convince-4CEE
+Logical reasoning encompasses deduction, induction, and abduction. However, while Large Language Models (LLMs) have effectively mastered the former two, abductive reasoning remains significantly underexplored. Existing frameworks, predominantly designed for static deductive tasks, fail to generalize to abductive reasoning due to unstructured state representation and lack of explicit state control. Consequently, they are inevitably prone to Evidence Fabrication, Context Drift, Failed Backtracking, and Early Stopping. To bridge this gap, we introduce Graph of States (GoS), a general-purpose neuro-symbolic framework tailored for abductive tasks. GoS grounds multi-agent collaboration in a structured belief states, utilizing a causal graph to explicitly encode logical dependencies and a state machine to govern the valid transitions of the reasoning process. By dynamically aligning the reasoning focus with these symbolic constraints, our approach transforms aimless, unconstrained exploration into a convergent, directed search. Extensive evaluations on two real-world datasets demonstrate that GoS significantly outperforms all baselines, providing a robust solution for complex abductive tasks. Code repo and all prompts: https://anonymous.4open.science/r/Graph-of-States-5B4E.
 
 
 
@@ -103,37 +103,3 @@ Convince/
 └── requirements.txt     # Dependencies
 ```
 
-## 🎨 Comic Walkthrough
-To facilitate an intuitive understanding of our framework, we present it in the form of comic strips.
-
-<div align="center">
-  <img src="assets/1.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/2.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/3.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/4.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/5.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/6.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/7.jpg" width="80%" alt="Comic">
-</div>
-
-<div align="center">
-  <img src="assets/8.jpg" width="80%" alt="Comic">
-</div>
