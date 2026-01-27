@@ -2,7 +2,7 @@
 
 <img src="assets/logo.png" width="200" alt="Convince Logo">
 
-# Grounding Reasoning in Explicit Belief States:  A Neuro-Symbolic Reasoning Framework for Abduction
+# Graph of States: Solving Abductive Tasks with Large Language Models
 
 
 
@@ -23,11 +23,11 @@ Logical reasoning encompasses deduction, induction, and abduction. However, whil
 
 
 ## 🔥 News
-* **[2026-01-22]** 🚀 **Convince** code released!
+* **[2026-01-22]** 🚀 **Graph of States** code released!
 
 ## 🌟 Key Features
 
-Convince introduces a dual-layer neuro-symbolic architecture designed to solve complex abductive tasks in high-stakes domains like Medical Diagnosis and Failure Diagnosis in Distributed Systems.
+GoS introduces a dual-layer neuro-symbolic architecture designed to solve complex abductive tasks in high-stakes domains like Medical Diagnosis and Failure Diagnosis in Distributed Systems.
 
 * **🧠 Cognitive Layer :** A role-based collaborative framework orchestrating agents aligned with real-world professional roles (e.g., *Physician*, *LinuxOperator*) for domain-specific execution.
 * **🕸️ Symbolic Layer :**
@@ -40,7 +40,7 @@ Convince introduces a dual-layer neuro-symbolic architecture designed to solve c
 <div align="center">
   <img src="assets/framework.png" width="40%" alt="Convince Framework">
   <br>
-  <em>Overview of the Convince Dual-Layer Neuro-Symbolic Framework.</em>
+  <em>Overview of the GoS Dual-Layer Neuro-Symbolic Framework.</em>
 </div>
 
 
@@ -51,13 +51,13 @@ Convince introduces a dual-layer neuro-symbolic architecture designed to solve c
 
     Download the zip file of this repo to your server and unzip it.
     ```bash
-    cd Convince
+    cd Gos
     ```
 
 2.  **Create a virtual environment (Recommended)**
     ```bash
-    conda create -n convince python=3.12.11
-    conda activate convince
+    conda create -n Gos python=3.12.11
+    conda activate Gos
     ```
 
 3.  **Install dependencies**
@@ -72,9 +72,9 @@ Convince introduces a dual-layer neuro-symbolic architecture designed to solve c
 
 ## 🚀 Quick Start
 
-Convince supports multiple domains. Below are examples for running the framework on Medical Diagnosis.
+Graph of States supports multiple domains. Below are examples for running the framework on Medical Diagnosis.
 
-Note: You can change the configs in ``/Convince/configs``
+Note: You can change the configs in ``/gos/configs``
 
 ### Medical Diagnosis (DiagnosisArena)
 Run the diagnosis on a sample case:
@@ -89,7 +89,7 @@ python main.py
 ## 📂 Project Structure
 
 ```text
-Convince/
+GoS/
 ├── assets/              # Images and figures
 ├── agents/              # Definition of central agent and expert agents
 ├── belief/              # Definition of causal graph and state machine
