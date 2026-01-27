@@ -1,6 +1,6 @@
-<div align="center">
+<!-- <div align="center">
 
-<img src="assets/logo.png" width="200" alt="Convince Logo">
+<img src="assets/logo.png" width="200" alt="Convince Logo"> -->
 
 # Graph of States: Solving Abductive Tasks with Large Language Models
 
