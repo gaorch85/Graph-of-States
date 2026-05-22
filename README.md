@@ -11,6 +11,9 @@
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
 
 
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=20&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=800&lines=Welcome+to+Graph+of+States;LLM+Reasoning+Framework+with+Belief+States;Powered+by+NKU+x+Lenovo" alt="Typing Animation" />
+</div>
 
 </div>
 
