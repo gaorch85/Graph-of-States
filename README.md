@@ -6,7 +6,7 @@
 
 
 
-[![Paper](https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg)]()
+[![Paper](https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg)](https://arxiv.org/pdf/2603.21250)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
 
