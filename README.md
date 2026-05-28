@@ -39,6 +39,8 @@ GoS introduces a dual-layer neuro-symbolic architecture designed to solve comple
     * **State Machine ($S$):** Governs the reasoning trajectory, enforcing rigorous logical transitions (Backtracking & Drill-down) to prevent *Failed Backtracking* and *Early Stopping*.
 * **🎯 Directed Search guided by reasoning focus ($h_t^*$):** Transforms aimless stochastic exploration into a convergent search by dynamically aligning reasoning focus with symbolic constraints.
 
+> Check the `assets` folder to see the comic version of GoS.
+
 ## 🖼️ Methodology
 
 <div align="center">
