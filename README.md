@@ -29,6 +29,7 @@ Logical reasoning encompasses deduction, induction, and abduction. However, whil
 
 
 ## 🔥 News
+* **[2026-06-07]** 🎉 **Graph of States** was featured by "机器之心"!
 * **[2026-05-01]** 🎉 **Graph of States** has been accepted by ICML 2026!
 * **[2026-01-22]** 🚀 **Graph of States** code released!
 
