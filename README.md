@@ -4,16 +4,19 @@
 
 # Graph of States: Solving Abductive Tasks with Large Language Models
 
+<h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for the latest update.</h5>
 
 
 [![Paper](https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg)](https://arxiv.org/pdf/2603.21250)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
+[![机器之心](https://img.shields.io/badge/%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83-WeChat-07C160.svg)](https://mp.weixin.qq.com/s/ZC_-zurf8iV6Kbp39AHgBg)
 
 
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=20&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=800&lines=Welcome+to+Graph+of+States;LLM+Reasoning+Framework+with+Belief+States;Powered+by+NKU+x+Lenovo" alt="Typing Animation" />
 </div>
+
 
 </div>
 
