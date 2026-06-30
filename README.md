@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
 [![机器之心](https://img.shields.io/badge/%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83-WeChat-07C160.svg)](https://mp.weixin.qq.com/s/ZC_-zurf8iV6Kbp39AHgBg)
-[![机器之心](https://img.shields.io/badge/X-black)](https://x.com/jiqizhixin/status/2067824443565694989)
+[![机器之心 X](https://img.shields.io/static/v1?label=%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83&message=X&color=black&logo=x&logoColor=white)](https://x.com/jiqizhixin/status/2067824443565694989)
 
 
 <div align="center">
