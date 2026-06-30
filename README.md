@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
 [![机器之心](https://img.shields.io/badge/%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83-WeChat-07C160.svg)](https://mp.weixin.qq.com/s/ZC_-zurf8iV6Kbp39AHgBg)
-
+[![机器之心](https://img.shields.io/badge/X-black)]([https://x.com/jiqizhixin/status/2067824443565694989])
 
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=20&duration=3000&pause=1000&color=00D9FF&center=true&vCenter=true&width=800&lines=Welcome+to+Graph+of+States;LLM+Reasoning+Framework+with+Belief+States;Powered+by+NKU+x+Lenovo" alt="Typing Animation" />
