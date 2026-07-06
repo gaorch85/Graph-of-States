@@ -181,7 +181,7 @@ Requirements:
 
 Example Output:
 {{"belief": "The patient has a fever, and laboratory tests show an elevated white blood cell count. This evidence strongly supports the conclusion that the patient has a bacterial infection. Additionally, fever is causally linked to fatigue, and the bacterial infection can be further specified as an infection caused by Streptococcus pneumoniae."}}"""
-        response, meta = llm_generate_response(user_prompt=user_prompt, model_path="deepseek-v4-pro", temperature=0.5, max_tokens=2048, system_prompt=system_prompt, return_meta=True)
+        response, meta = llm_generate_response(user_prompt=user_prompt, model_path="gpt-3.5-turbo", temperature=0.5, max_tokens=2048, system_prompt=system_prompt, return_meta=True)
         print(f"Response: {response}")
         response_dict = parse_json_response(response)
         self.belief = response_dict["belief"]
