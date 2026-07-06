@@ -11,62 +11,144 @@ from dataclasses import dataclass
 
 
 
+def _strip_json_fence(text: str) -> str:
+    fence_match = re.search(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.S | re.I)
+    if fence_match:
+        return fence_match.group(1).strip()
+    if text.lower().startswith("json"):
+        return text[4:].strip()
+    return text
+
+
+def _extract_complete_json_values(text: str) -> List[Any]:
+    """Scan text and collect every parseable JSON object/array fragment."""
+    decoder = json.JSONDecoder()
+    values: List[Any] = []
+    idx = 0
+    while idx < len(text):
+        while idx < len(text) and text[idx] in " \t\n\r,":
+            idx += 1
+        if idx >= len(text) or text[idx] not in "{[":
+            idx += 1
+            continue
+        try:
+            value, end = decoder.raw_decode(text, idx)
+            values.append(value)
+            idx = end
+        except json.JSONDecodeError:
+            idx += 1
+    return values
+
+
+def _looks_truncated(text: str) -> bool:
+    stripped = text.rstrip()
+    if not stripped:
+        return True
+    if stripped[-1] in "}]":
+        try:
+            json.loads(stripped)
+            return False
+        except json.JSONDecodeError:
+            pass
+    return stripped.count("{") > stripped.count("}") or stripped.count("[") > stripped.count("]")
+
+
+def _score_parsed(value: Any) -> Tuple[int, int, int]:
+    if isinstance(value, dict):
+        list_items = sum(len(v) for v in value.values() if isinstance(v, list))
+        return (2, list_items, len(value))
+    if isinstance(value, list):
+        return (1, len(value), 0)
+    return (0, 0, 0)
+
+
+def _pick_best_parsed(candidates: List[Any]) -> Any:
+    return max(candidates, key=_score_parsed)
+
+
+def _salvage_truncated_json(text: str) -> Any:
+    """Recover as much structure as possible from truncated or malformed JSON."""
+    if not _looks_truncated(text):
+        return None
+
+    decoder = json.JSONDecoder()
+
+    # Try appending common closing brackets for cut-off responses.
+    for suffix in ("", "}", "]}", "\"]}", "\"}]}", "\"}", "\"]", "}]", "\"}]"):
+        try:
+            return json.loads(text + suffix)
+        except json.JSONDecodeError:
+            continue
+
+    # Recover {"key": [{...}, {...}, <truncated>]}
+    array_match = re.search(r'"([A-Za-z_][A-Za-z0-9_]*)"\s*:\s*\[', text)
+    if array_match:
+        key = array_match.group(1)
+        items = _extract_complete_json_values(text[array_match.end():])
+        if items:
+            return {key: items}
+
+    # Recover a top-level array with complete elements only.
+    stripped = text.lstrip()
+    if stripped.startswith("["):
+        items = _extract_complete_json_values(stripped)
+        if items:
+            return items
+
+    # Fall back to any complete JSON values found in the text.
+    values = _extract_complete_json_values(text)
+    if len(values) == 1:
+        return values[0]
+    if len(values) > 1:
+        return values
+
+    # Last resort: parse the longest valid prefix starting at the first brace.
+    start = text.find("{")
+    if start != -1:
+        for end in range(len(text), start, -1):
+            chunk = text[start:end].rstrip().rstrip(",")
+            if not chunk:
+                continue
+            try:
+                return decoder.raw_decode(chunk)[0]
+            except json.JSONDecodeError:
+                continue
+
+    return None
+
+
 def parse_json_response(raw: Any) -> Any:
     if isinstance(raw, (dict, list)):
         return raw
     if raw is None:
         raise ValueError("Empty response to parse as JSON")
 
-    text = str(raw).strip()
-    fence_match = re.search(r"```(?:json)?\s*(.*?)\s*```", text, flags=re.S | re.I)
-    if fence_match:
-        text = fence_match.group(1).strip()
-    elif text.lower().startswith("json"):
-        text = text[4:].strip()
+    text = _strip_json_fence(str(raw).strip())
+    if not text:
+        raise ValueError("Empty response to parse as JSON")
+
     try:
         return json.loads(text)
     except json.JSONDecodeError as exc:
         decoder = json.JSONDecoder()
-        objs = None
-        key = None
-        idx = 0
+        candidates: List[Any] = []
 
-        ### Catch response in the format {"candidates": [{}, ...]}
-        while idx < len(text):
-            ch = text[idx]
-            if ch == "[":
-                ### catch key
-                match = re.search(r"""\"[a-z|A-Z]*\": \[""", text)
-                
-                start = match.span()[0] + 1
-                end = match.span()[1] - 4
-                key = text[start: end]
-    
-                idx += 1
-                objs = []
+        for idx, ch in enumerate(text):
+            if ch not in ("{", "["):
                 continue
-            elif ch == "{":
-                    ### match obj
-                    match = re.match(r"\{[^\{]*\}", text[idx:], flags=re.S | re.I)
-                    if match:
-                        obj = json.loads(match.group(0))
-                        ### json load
-                        if objs is not None:
-                            objs.append(obj)
-                            idx += match.span()[1]
-                            continue
-                        else:
-                            return obj
-                    else:
-                        idx += 1
-                        continue
-            else:
-                idx += 1
+            try:
+                candidates.append(decoder.raw_decode(text, idx)[0])
+            except json.JSONDecodeError:
                 continue
-        if key:
-            return {f"{key}": objs}
-        return objs
-    raise exc
+
+        salvaged = _salvage_truncated_json(text)
+        if salvaged is not None:
+            candidates.append(salvaged)
+
+        if candidates:
+            return _pick_best_parsed(candidates)
+
+        raise exc
 
 
 
@@ -970,30 +1052,3 @@ def generate_causal_graph_html(graph_list, html_path):
 
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
-response = """{
-  "candidates": [
-    {
-      "id": "h001",
-      "label": "Inflammatory skin condition (e.g., lichen planus)",
-      "confidence": 0.6,
-      "why": "Node-2 morphology (violaceous annular patches without scale) and node-3 severe pruritus support; node-4 demonstrates resistance to mild steroid, fitting a more stubborn inflammatory process."
-    },
-    {
-      "id": "h002",
-      "label": "Cutaneous malignancy (e.g., lymphoma)",
-      "confidence": 0.25,
-      "why": "Node-3 severe nocturnal pruritus is a red flag; node-2 morphology can occur in lymphoma; node-4 steroid resistance is consistent, but localized nature reduces likelihood."
-    },
-    {
-      "id": "h003",
-      "label": "Superficial fungal infection",
-      "confidence": 0.1,
-      "why": "Despite annular shape, node-2 (no scale, Wood lamp negative) and node-4 (ketoconazole failure) strongly refute; node-3 pruritus is non-specific."
-    },
-    {
-      "id": "h004",
-      "label": "Allergic/Irritant contact dermatitis",
-      "confidence": 0."""
-re = parse_json_response(response)
-print(re)
