@@ -23,19 +23,50 @@ def parse_json_response(raw: Any) -> Any:
         text = fence_match.group(1).strip()
     elif text.lower().startswith("json"):
         text = text[4:].strip()
-
     try:
         return json.loads(text)
     except json.JSONDecodeError as exc:
         decoder = json.JSONDecoder()
-        for idx, ch in enumerate(text):
-            if ch in ("{", "["):
-                try:
-                    obj, _ = decoder.raw_decode(text, idx=idx)
-                    return obj
-                except json.JSONDecodeError:
-                    continue
-        raise exc
+        objs = None
+        key = None
+        idx = 0
+
+        ### Catch response in the format {"candidates": [{}, ...]}
+        while idx < len(text):
+            ch = text[idx]
+            if ch == "[":
+                ### catch key
+                match = re.search(r"""\"[a-z|A-Z]*\": \[""", text)
+                
+                start = match.span()[0] + 1
+                end = match.span()[1] - 4
+                key = text[start: end]
+    
+                idx += 1
+                objs = []
+                continue
+            elif ch == "{":
+                    ### match obj
+                    match = re.match(r"\{[^\{]*\}", text[idx:], flags=re.S | re.I)
+                    if match:
+                        obj = json.loads(match.group(0))
+                        ### json load
+                        if objs is not None:
+                            objs.append(obj)
+                            idx += match.span()[1]
+                            continue
+                        else:
+                            return obj
+                    else:
+                        idx += 1
+                        continue
+            else:
+                idx += 1
+                continue
+        if key:
+            return {f"{key}": objs}
+        return objs
+    raise exc
 
 
 
@@ -940,4 +971,29 @@ def generate_causal_graph_html(graph_list, html_path):
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-   
+response = """{
+  "candidates": [
+    {
+      "id": "h001",
+      "label": "Inflammatory skin condition (e.g., lichen planus)",
+      "confidence": 0.6,
+      "why": "Node-2 morphology (violaceous annular patches without scale) and node-3 severe pruritus support; node-4 demonstrates resistance to mild steroid, fitting a more stubborn inflammatory process."
+    },
+    {
+      "id": "h002",
+      "label": "Cutaneous malignancy (e.g., lymphoma)",
+      "confidence": 0.25,
+      "why": "Node-3 severe nocturnal pruritus is a red flag; node-2 morphology can occur in lymphoma; node-4 steroid resistance is consistent, but localized nature reduces likelihood."
+    },
+    {
+      "id": "h003",
+      "label": "Superficial fungal infection",
+      "confidence": 0.1,
+      "why": "Despite annular shape, node-2 (no scale, Wood lamp negative) and node-4 (ketoconazole failure) strongly refute; node-3 pruritus is non-specific."
+    },
+    {
+      "id": "h004",
+      "label": "Allergic/Irritant contact dermatitis",
+      "confidence": 0."""
+re = parse_json_response(response)
+print(re)
