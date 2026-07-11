@@ -10,6 +10,7 @@
 [![Paper](https://img.shields.io/badge/Paper-ArXiv-B31B1B.svg)](https://arxiv.org/pdf/2603.21250)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
+[![Project](https://img.shields.io/badge/Project-Graph_of_States-orange)](https://luoyu100.github.io/projects/graph-of-states/project/)
 [![机器之心](https://img.shields.io/badge/%E6%9C%BA%E5%99%A8%E4%B9%8B%E5%BF%83-WeChat-07C160.svg)](https://mp.weixin.qq.com/s/ZC_-zurf8iV6Kbp39AHgBg)
 [![机器之心](https://img.shields.io/badge/机器之心-1f2937?logo=x&logoColor=white)](https://x.com/jiqizhixin/status/2067824443565694989)
 
