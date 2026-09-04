@@ -22,6 +22,7 @@
 
 </div>
 
+> [ICML 2026] A neuro-symbolic framework for abductive reasoning that grounds multi-agent collaboration in structured belief states using a causal graph and state machine.
 
 
 ## 📖 Abstract
@@ -51,9 +52,9 @@ GoS introduces a dual-layer neuro-symbolic architecture designed to solve comple
 ## 🖼️ Methodology
 
 <div align="center">
-  <img src="assets/framework.png" width="40%" alt="Convince Framework">
+  <img src="assets/overview.png"ß alt="Convince Framework">
   <br>
-  <em>Overview of the GoS Dual-Layer Neuro-Symbolic Framework.</em>
+  <em>Overview of GoS</em>
 </div>
 
 
@@ -116,3 +117,14 @@ GoS/
 └── requirements.txt     # Dependencies
 ```
 
+## 📬 Citation
+
+If you find this work helpful, please consider citing us:
+```bibtex
+@article{luo2026graph,
+  title={Graph of States: Solving Abductive Tasks with Large Language Models},
+  author={Luo, Yu and Gao, Rongchen and Teng, Lu and Wen, Xidao and Jiang, Jiamin and Zhang, Qingliang and Sun, Yongqian and Zhang, Shenglin and Feng, Jiasong and Liu, Tong and others},
+  journal={arXiv preprint arXiv:2603.21250},
+  year={2026}
+}
+```
