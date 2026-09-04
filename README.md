@@ -121,10 +121,12 @@ GoS/
 
 If you find this work helpful, please consider citing us:
 ```bibtex
-@article{luo2026graph,
-  title={Graph of States: Solving Abductive Tasks with Large Language Models},
-  author={Luo, Yu and Gao, Rongchen and Teng, Lu and Wen, Xidao and Jiang, Jiamin and Zhang, Qingliang and Sun, Yongqian and Zhang, Shenglin and Feng, Jiasong and Liu, Tong and others},
-  journal={arXiv preprint arXiv:2603.21250},
-  year={2026}
+@inproceedings{
+luo2026graph,
+title={Graph of States: Solving Abductive Tasks with Large Language Models},
+author={Yu Luo and Rongchen Gao and Lu Teng and Xidao Wen and Jiamin Jiang and Qingliang Zhang and Yongqian Sun and Shenglin Zhang and Jiasong Feng and Tong Liu and Wenjie Zhang and Dan Pei},
+booktitle={Forty-third International Conference on Machine Learning},
+year={2026},
+url={https://openreview.net/forum?id=F6PoIbPAe2}
 }
 ```
